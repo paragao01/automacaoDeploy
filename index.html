@@ -1,0 +1,372 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="Author" CONTENT="CDL-Rio; dsv@cdlrio.com.br">
+<META NAME="Composer" CONTENT="Paulo Aragao; paragao@cdlrio.com.br">
+<TITLE>Identifica&ccedil;atilde;o do Usu&aacuterio</TITLE>
+<link rel="stylesheet" type="text/css" href="/includes/estiloNS.css" media="print">
+<link href='../bvs/css/textos.css' rel='stylesheet' type='text/css'>
+<link href='../bvs/css/estilos.css' rel='stylesheet' type='text/css'>
+
+
+
+ <script type="text/javascript">
+
+//<![CDATA[
+
+var BrowserDetect = {
+
+init: function () {
+
+this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+
+this.version = this.searchVersion(navigator.userAgent)|| this.searchVersion(navigator.appVersion)|| "an unknown version";
+
+this.OS = this.searchString(this.dataOS) || "an unknown OS";
+
+},
+
+searchString: function (data) {
+
+for (var i=0;i<data.length;i++)	{
+
+        var dataString = data[i].string;
+
+        var dataProp = data[i].prop;
+
+        this.versionSearchString = data[i].versionSearch || data[i].identity;
+
+        if (dataString) {if (dataString.indexOf(data[i].subString) != -1)
+
+                return data[i].identity;}
+
+        else if (dataProp){return data[i].identity;}
+
+}
+
+},
+
+searchVersion: function (dataString) {
+
+var index = dataString.indexOf(this.versionSearchString);
+
+if (index == -1) return;
+
+return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+
+},
+
+dataBrowser: [
+
+        {string: navigator.userAgent,subString: "Chrome",identity: "Chrome"},
+
+        {string: navigator.userAgent,subString: "OmniWeb",versionSearch: "OmniWeb/",identity: "OmniWeb"},
+
+        {string: navigator.vendor,subString: "Apple",identity: "Safari",versionSearch: "Version"},
+
+        {prop: window.opera,identity: "Opera"},
+
+        {string: navigator.vendor,subString: "iCab",identity: "iCab"},
+
+        {string: navigator.vendor,subString: "KDE",identity: "Konqueror"},
+
+        {string: navigator.userAgent,subString: "Firefox",identity: "Firefox"},
+
+        {string: navigator.vendor,subString: "Camino",identity: "Camino"},
+
+        {string: navigator.userAgent,subString: "Netscape",identity: "Netscape"},
+
+        {string: navigator.userAgent,subString: "MSIE",identity: "Explorer",versionSearch: "MSIE"},
+
+        {string: navigator.userAgent,subString: "Gecko",identity: "Mozilla",versionSearch: "rv"},
+
+        {string: navigator.userAgent,subString: "Mozilla",identity: "Netscape",versionSearch: "Mozilla"}],
+
+dataOS:[{string: navigator.platform,subString: "Win",identity: "Windows"},
+
+        {string: navigator.platform,subString: "Mac",identity: "Mac"},
+
+        {string: navigator.userAgent,subString: "iPhone",identity: "iPhone/iPod"},
+
+        {string: navigator.platform,subString: "Linux",identity: "Linux"}]
+
+};
+
+BrowserDetect.init();
+
+
+
+function bookMark(theurl, thetitle, browser){
+
+    switch(browser){
+
+        case "Firefox":
+
+            window.sidebar.addPanel(thetitle, theurl,"");
+
+            break;
+
+        case "Explorer":
+
+            window.external.AddFavorite( theurl, thetitle);
+
+            break;
+
+        case "Chrome":
+
+        case "Safari":
+
+        case "Opera":
+
+        case "Netscape":
+
+            switch(BrowserDetect.OS){
+
+            case "Windows":
+
+            case "Linux":
+
+            alert('press ctrl+D to bookmark this page');
+
+            break;
+
+            case "Mac":
+
+                alert('press cmd+D to bookmark this page');
+
+            break;
+
+            }
+
+            break;
+
+    }
+
+}
+
+//]]>
+
+</script>
+
+<script language="Javascript">
+function limpaCampo(){
+   var frm = document.forms[0];
+   if(frm.elements['CAMPO11'].value==""){
+        alert("Favor informar Firma");
+   	frm.CAMPO11.focus();
+        return false;
+   }
+   if(frm.elements['SENHA11'].value==""){
+        alert("Favor informar Senha");
+   	frm.SENHA11.focus();
+        return false;
+   }
+   frm.elements['CAMPO1'].value = frm.elements['CAMPO11'].value;
+   frm.elements['SENHA'].value  = frm.elements['SENHA11'].value;
+   frm.elements['CAMPO11'].value = "";
+   frm.elements['SENHA11'].value = "";
+   frm.CAMPO11.focus();
+}
+</script>
+</HEAD>
+<body onload="document.form.CAMPO11.focus()" bgcolor="#ffffff" text="#000000">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr bgcolor="#D8E7FE"> 
+<div id='barraprincipal'>
+                <script type='text/javascript'>
+		document.write("<tr><td align='left'  bgcolor='#FFFFFF' scope='col'><img src='../bvs/img/topo-cdlrio2.gif' /></td>");
+		document.write("<td align='right' bgcolor='#FFFFFF' scope='col'><img src='../bvs/img/topo-cdlrio3.gif' /></td></tr>");
+		document.write("<tr><td colspan='2'><hr color= '#005a99' size='4'></hr></td></tr>");
+                </script>
+</div>
+</tr>
+<tr> 
+<td>
+ <!--<div id='divisao' align='left'></div>-->
+</td>
+</tr>
+</tbody></table>
+
+<td height="437">
+  <tr>
+    <td height="437"> 
+      <form method="post" action="/cgi-bin/identificacao.cgi" name="form" target="_blank" onReset="document.form.CAMPO11.focus()" onSubmit="return(limpaCampo(this));">
+        <p><b><font face="Verdana, Arial, Helvetica, sans-serif" size="3">&nbsp; Identifica&ccedil;&atilde;o do Associado</font></b></p>
+        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp; Este servi&ccedil;o &eacute; exclusivo aos associados CDLRio Deploy no GIT Mostrando pro Antonio</font></p>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" height="274">
+          <tbody> 
+          <tr> 
+	  <input type="hidden" name="CAMPO1">
+	  <input type="hidden" name="SENHA">
+	 <!-- <input type="hidden" name="SERVICO" value=""> -->
+            <td height="26" nowrap width="42"></td>
+            <td nowrap width="75"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000066"><b>Entidade</b></font></td>
+            <td height="26" nowrap width="639"> <font face="Verdana, Arial, Helvetica, sans-serif"> 
+              <select name="ENTIDADE" size="1">
+		<OPTION VALUE="RJ001">RIO DE JANEIRO</OPTION>
+                <!-- <OPTION VALUE="RJ913">ACEIC-NORTE</OPTION> -->
+                <OPTION VALUE="RJ916">ACIAPI</OPTION>
+                <OPTION VALUE="RJ230">ACICAMPOS</OPTION>
+                <OPTION VALUE="RJ043">ACI ITAPERUNA</OPTION>
+                <OPTION VALUE="RJ911">ACISC</OPTION>
+                <!-- <OPTION VALUE="RJ079">ACI S&Atilde;O JOSÉ DO CAL&Ccedil;ADO</OPTION> -->
+                <OPTION VALUE="RJ901">ACIRB</OPTION>
+                <OPTION VALUE="RJ915">ACJSC</OPTION>
+                <!--    <OPTION VALUE="RJ029">ANGRA DOS REIS</OPTION> -->
+                <OPTION VALUE="RJ024">ARARUAMA</OPTION>
+                <OPTION VALUE="MD001">ASSECC</OPTION>
+                <!--    <OPTION VALUE="BP001">BARRA DO PIRAI</OPTION> -->
+                <!--    <OPTION VALUE="RJ010">BARRA MANSA</OPTION>  -->
+                <!--    <OPTION VALUE="RJ066">BELFORD ROXO</OPTION> -->
+                <OPTION VALUE="RJ039">BOM JARDIM</OPTION>
+                <OPTION VALUE="RJ021">BOM JESUS DO ITABAPOANA</OPTION>
+                <!-- <OPTION VALUE="RJ900">BOM JESUS DO NORTE</OPTION> -->
+                <OPTION VALUE="RJ015">CABO FRIO</OPTION>
+                <!-- <OPTION VALUE="RJ910">CACHOEIRAS DE MACACU</OPTION> -->
+                <OPTION VALUE="RJ902">CAMPO GRANDE</OPTION>
+                <!--    <OPTION VALUE="RJ005">CAMPOS DOS GOYTACAZES</OPTION> -->
+                <!-- <OPTION VALUE="RJ016">CANTAGALO CORDEIRO</OPTION> -->
+                <!-- <OPTION VALUE="RJ914">CARAPEBUS</OPTION> -->
+                <!--    <OPTION VALUE="RJ055">CARDOSO MOREIRA</OPTION> -->
+                <OPTION VALUE="RJ035">CARMO</OPTION>
+                <OPTION VALUE="RJ101">CASIMIRO DE ABREU</OPTION>
+                <OPTION VALUE="RJ044">CONCEI&Ccedil;&Atilde;O DE MACABU</OPTION>
+                <!--    <OPTION VALUE="CL001">COOPCRERIO</OPTION> -->
+                <!-- <OPTION VALUE="RJ220">EMBRACREDI BRASIL</OPTION> -->
+                <!-- <OPTION VALUE="RJ240">C&M DIGITALIZA&Ccedil;&Atilde;O DE DADOS LTDA</OPTION> -->
+                <!--    <OPTION VALUE="RJ068">DUQUE DE CAXIAS</OPTION> -->
+                <!--    <OPTION VALUE="RJ036">DUAS BARRAS</OPTION> -->
+                <!--    <OPTION VALUE="RJ070">ITABORA&Iacute;</OPTION> -->
+                <!--    <OPTION VALUE="RJ034">ITAGUA&Iacute;</OPTION>  -->
+                <OPTION VALUE="RJ051">ITALVA</OPTION>
+                <!--    <OPTION VALUE="RJ038">ITAOCARA</OPTION> -->
+                <!--    <OPTION VALUE="RJ052">LAJE DO MURIAE</OPTION> -->
+                <!--    <OPTION VALUE="RJ009">MACA&Eacute;</OPTION> -->
+                <!--<OPTION VALUE="RJ031">MAG&Eacute;</OPTION>-->
+                <!--    <OPTION VALUE="RJ072">MARIC&Aacute;</OPTION> -->
+                <!--    <OPTION VALUE="RJ083">MESQUITA</OPTION> -->
+                <OPTION VALUE="RJ048">MIGUEL PEREIRA</OPTION>
+                <!--    <OPTION VALUE="RJ027">MIRACEMA</OPTION> -->
+                <!-- <OPTION VALUE="RJ030">NATIVIDADE</OPTION> -->
+                <!--    <OPTION VALUE="RJ064">NIL&Oacute;POLIS</OPTION> -->
+                <!--    <OPTION VALUE="RJ002">NITER&Oacute;I</OPTION> -->
+                <!--    <OPTION VALUE="RJ007">NOVA FRIBURGO</OPTION> -->
+                <!--    <OPTION VALUE="RJ006">NOVA IGUA&Ccedil;U</OPTION> -->
+                <OPTION VALUE="RJ082">PARACAMBI</OPTION>
+                <!--    <OPTION VALUE="RJ018">PARAIBA DO SUL</OPTION> -->
+                <!-- <OPTION VALUE="RJ905">PARATI</OPTION> -->
+                <!--    <OPTION VALUE="RJ003">PETR&Oacute;POLIS</OPTION> -->
+                <!-- <OPTION VALUE="RJ056">PORCIUNCULA</OPTION> -->
+                <!--    <OPTION VALUE="RJ062">PORTO REAL</OPTION> -->
+                <OPTION VALUE="RJ054">QUATIS</OPTION>
+                <OPTION VALUE="RJ040">QUEIMADOS</OPTION>
+                <!--    <OPTION VALUE="RJ074">QUISSAM&Atilde;</OPTION> -->
+                <!--    <OPTION VALUE="RJ022">RESENDE</OPTION> -->
+                <!--    <OPTION VALUE="RJ011">RIO BONITO</OPTION> -->
+                <!--    <OPTION VALUE="RJ042">RIO DAS OSTRAS</OPTION> -->
+                <!--    <OPTION VALUE="RJ023">SANTO ANTÔNIO DE PÁDUA</OPTION> -->
+                <OPTION VALUE="RJ906">S&Atilde;O FIDELIS</OPTION>
+                <!-- <OPTION VALUE="RJ078">S&Atilde;O FRANCISCO DE ITABAPOANA</OPTION> -->
+                <!--    <OPTION VALUE="RJ017">S&Atilde;O GON&Ccedil;ALO</OPTION> -->
+                <!--    <OPTION VALUE="RJ033">S&Atilde;O JO&Atilde;O DE MERITI</OPTION> -->
+                <!--    <OPTION VALUE="RJ079">S&Atilde;O JOSÉ DO CAL&Ccedil;ADO</OPTION> -->
+                <OPTION VALUE="RJ053">S&Atilde;O JOS&Eacute; DE UB&Aacute;</OPTION>
+                <!--    <OPTION VALUE="RJ032">S&Atilde;O PEDRO DA ALDEIA</OPTION> -->
+                <OPTION VALUE="RJ046">SAQUAREMA</OPTION>
+                <OPTION VALUE="AG001">SEGURA</OPTION>
+                <!-- <OPTION VALUE="RJ907">SILVA JARDIM</OPTION> -->
+                <OPTION VALUE="RJ200">SINOC</OPTION>
+                <OPTION VALUE="RJ210">SPCPLUS</OPTION>
+                <!--    <OPTION VALUE="RJ004">TERES&Oacute;POLIS</OPTION> -->
+                <!--    <OPTION VALUE="RJ008">TRES RIOS</OPTION> -->
+                <OPTION VALUE="RJ028">VALEN&Ccedil;A</OPTION>
+                <!-- <OPTION VALUE="RJ026">VASSOURAS</OPTION> -->
+                <!--    <OPTION VALUE="RJ012">VOLTA REDONDA</OPTION> -->
+                <!--    <OPTION VALUE="LA001">ZVIRTUAL</OPTION> -->
+              </select>
+              </font></td>
+
+          </tr>
+          <tr> 
+            <td nowrap width="42" height="37"></td>
+            <td nowrap width="75" height="37"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000066"><b>C&oacute;digo</b></font></td>
+            <td nowrap width="639" height="37"> <font face="Verdana, Arial, Helvetica, sans-serif"> 
+              <input size="11" maxlength="10" name="CAMPO11" type="text">
+              </font></td>
+          </tr>
+          <tr> 
+            <td nowrap width="42" height="33"></td>
+            <td height="33" nowrap width="75"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000066"><b>Senha</b></font></td>
+            <td height="33" nowrap width="639"> <font face="Verdana, Arial, Helvetica, sans-serif"> 
+              <input size="11" maxlength="10" name="SENHA11" type="password">
+              </font></td>
+          </tr>
+            <!-- <tr> 
+            <td height="37" nowrap width="42"></td>
+             <td nowrap width="75" height="37"><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#000066"><b>Serviço</b></font></td> 
+            <td height="37" nowrap width="639"> 
+             <table border="0" cellpadding="0" cellspacing="0" width="100%">
+             <tbody> 
+             <tr> 
+             <td width="26%"> <font face="Verdana, Arial, Helvetica, sans-serif"> 
+             <input size="11" maxlength="10" name="SERVICO" type="text">
+             </font></td>
+            </tr>
+            </tbody> 
+            </table>
+            </td>
+          </tr> -->
+            
+            <td width="42" height="69"></td>
+            <td width="75" height="69"></td>
+            <td nowrap width="639" height="69"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+              <input name="bot_confirma2" value="Confirma" type="submit">
+              &nbsp;</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+              <input name="bot_limpa2" value="Limpa formul&aacute;rio" type="reset">
+            </font></td>
+          </tr>
+          <tr> 
+            <td width="42" height="89"></td>
+            <td width="75" height="89">&nbsp;</td>
+            <td width="639" height="89"> 
+              <table border="0" cellpadding="0" cellspacing="0" width="640">
+                <tbody> 
+                <tr> 
+                  <td width="760"> 
+                    <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                      <font color="#000099">A senha para acesso ao sistema &eacute; de 
+                      responsabilidade do Associado, <br>
+                      n&atilde;o cabendo ao CDLRio nenhuma responsabilidade pelo seu 
+                      uso.</font></font> </p>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="760">&nbsp;</td>
+                </tr>
+                </tbody> 
+              </table>
+            </td>
+          </tr>
+          </tbody> 
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id='rodape'>
+                <script type='text/javascript'>
+                largura = screen.width;
+                if(largura <=  800) 
+document.write("<td height='30' scope='col'><img src='../bvs/img/rodape.jpg' width='100%' height='55' /></td>");
+                if(largura >= 1024) 
+document.write("<td height='30' scope='col'><img src='../bvs/img/rodape.jpg' width='100%' height='55' /></td>");
+                </script>
+</div>
+</body>
+</html>
