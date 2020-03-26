@@ -6,6 +6,6 @@ git push origin master
 git push serverHomologacao master:master
 echo .
 echo .
-echo Feito deploy da aplicacao
+echo ********FEITO DEPLOY DA APLICAÇÃO NO AMBIENTE DE HOMOLOGAÇÃO.
 echo .
 echo .
