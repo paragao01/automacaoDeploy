@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git add .
-git commit -m "Alteracao do arquivo index"
+git commit -m "Alteracao do arquivo index para Homologacao"
 git push origin master
 git push serverHomologacao master:master
 clear
